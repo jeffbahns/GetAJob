@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My own tests</title>
+</head>
+
+<body>
+  <script>
+    // find longest sequence of zeroes in binary num
+    const longestBinaryZeroSequence = (num) => {
+      var longest = 0;
+      var current = 0;
+      num.split('').forEach(bit => {
+        if (bit == '1') {
+          longest = Math.max(longest, current);
+          current = 0;
+        } else {
+          current++;
+        }
+      });
+      return longest;
+    };
+    console.log(longestBinaryZeroSequence('101001'));
+
+    //cracking the code 1.1
+    const stringAllUniqueCharacters = (string) => {
+      var hash = {};
+      for (var i = 0; i < string.length; i++) {
+        let char = string[i];
+        if (!hash[char]) {
+          hash[char] = 0;
+        } else if (hash[char] == 1) {
+          return false;
+        }
+        hash[char]++;
+
+      }
+      console.log(hash);
+      return true;
+    };
+
+    //cracking the code 1.1
+    const stringAllUniqueCharactersModified = (string) => {
+      for (var i = 0; i < string.length; i++) {
+        let char1 = string[i];
+        for (var j = i + 1; j < string.length; j++) {
+          let char2 = string[j];
+          if (char1 == char2) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
+    console.log(stringAllUniqueCharacters("lhel"));
+    console.log(stringAllUniqueCharactersModified("lheolo"));
+
+
+    //cracking the code 1.5
+    const stringCompress = (string) => {
+
+    };
+    stringCompress("hello world");
+
+
+    //cracking the code 2.2
+    class LinkedList {
+      // constructor 
+      constructor(element, next=null) {
+        this.element = element;
+        this.next = next;
+      }
+
+      blah() {
+        let arr = [this.element];
+        let current = this.next;
+        
+        while (current != null) {
+          arr.push(current.element);
+          current = current.next;
+        }
+        return arr;
+      }
+    }
+
+    const kthLastElement = (linkedList, k) => {
+      var queue = [];
+      var length = 0;
+      
+      // push linkedlist.length onto a queue
+      while (linkedList.next) {
+        queue.push(linkedList.element);
+        linkedList = linkedList.next;
+        length++;
+      }
+      
+      console.log(queue);
+      // pop linkedlist.length - k elements from queue
+      for (var i = 0; i < length - k - 1; i++) {
+        console.log(queue);mj
+        queue.shift();
+        
+      }
+
+      // peek()
+      return queue.pop();
+    }
+    var l = new LinkedList('one', new LinkedList('two', new LinkedList('three', new LinkedList('four', new LinkedList('five')))));
+
+
+    const reverseLinkedLIst = (linkedList) => {
+      var stack = [];
+      while (linkedList != null) {
+        stack.push(linkedList.element);
+        linkedList = linkedList.next;
+      }
+
+      // while (stack.length) {
+
+      // }
+    }
+    console.log(kthLastElement(l, 3));
+
+
+    function frog(X, A) {
+      // write your code in JavaScript (Node.js 8.9.4)
+      var l = [];
+      for (var i = 1; i <= X; i++) {
+          l.push(i);
+      }
+      console.log(l);
+
+      for (var i = 0; i < A.length; i++) {
+          if (l.indexOf(A[i]) >= 0) {
+            console.log('splicing...', A[i]);
+              l.splice(l.indexOf(A[i]), 1);
+          }
+          if (l.length == 0) {
+              return i;
+          }
+      }
+      console.log(l);
+      return -1;
+    }  
+    console.log(frog(5, [1, 3, 1, 4, 2, 3, 5, 4]));
+
+    //codility triangle
+    function solution(A) {
+      // write your code in JavaScript (Node.js 8.9.4)
+      N = A.length;
+      for ( var i = 0; i < A.length; i++) {
+          var P = A[i];
+
+          for (var j = i+1; j < A.length; j++) {
+              var Q = A[j];
+              
+              for (var k = j+1; k < A.length; k++) {
+                  var R = A[k];
+                  
+                  if (P+Q>R && Q+R>P && R+P>Q) {
+                      return 1;
+                  }
+              }
+          }
+      }
+      return 0;
+    }
+
+    function fizzBuzzResearchSquare(count) {
+        for ( var i = 1; i <= count; i++) { 
+            if ( i % 3===0 && i % 5===0) { console.log("Research_Square"); } 
+            else if (i % 3 === 0) { console.log("Research"); }
+            else if (i % 5 === 0) {console.log("Square"); }
+            else { console.log(i); }
+        }
+    }
+    fizzBuzzResearchSquare(100);
+    
+  </script>
+</body>
+
+</html>
